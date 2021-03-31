@@ -1,0 +1,23 @@
+{
+    "name": "timer-bot",
+    "version": "0.1.0",
+    "description": "resets a timer upon keyword",
+    "main": "bot.js",
+    "scripts": {
+        "test": "node bot.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/uniqueusername/timer-bot.git"
+    },
+    "author": "ary",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/uniqueusername/timer-bot/issues"
+    },
+    "homepage": "https://github.com/uniqueusername/timer-bot#readme",
+    "dependencies": {
+        "discord.js": "^12.5.1",
+        "prompt": "latest"
+    }
+}
