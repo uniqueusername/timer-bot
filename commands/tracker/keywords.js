@@ -1,7 +1,7 @@
 module.exports = {
     name: "keywords",
+    description: "lists the current keywords",
     aliases: ["kw"],
-    description: "states time since last mention of a keyword",
     execute(message, args) {
         let keywordString = ""
         for (keyword of message.client.config.keywords) {
