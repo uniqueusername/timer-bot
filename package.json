@@ -1,6 +1,6 @@
 {
     "name": "timer-bot",
-    "version": "0.5.2",
+    "version": "0.5.3",
     "description": "resets a timer upon keyword",
     "main": "bot.js",
     "scripts": {
