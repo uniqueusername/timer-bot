@@ -1,5 +1,5 @@
 module.exports = {
-    name: "message",
+    listener: "message",
     execute(message, client) {
         // return if message doesn't start with command prefix
         if (!message.content.startsWith(client.config.prefix) || message.author.bot) return

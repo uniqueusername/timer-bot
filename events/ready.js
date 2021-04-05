@@ -1,5 +1,5 @@
 module.exports = {
-    name: "ready",
+    listener: "ready",
     once: true,
     execute() {
         console.log("client ready!")

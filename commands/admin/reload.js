@@ -1,6 +1,6 @@
 module.exports = {
     name: "reload",
-    description: "reloads one or all commands",
+    description: "reloads one command module",
     adminOnly: true,
     execute(message, args) {
         const fs = require("fs")

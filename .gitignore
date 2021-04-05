@@ -77,3 +77,4 @@ typings/
 
 .eslintrc.js
 config.json
+tracker.json

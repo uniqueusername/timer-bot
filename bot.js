@@ -9,9 +9,11 @@ const client = new Discord.Client()
 
 // variables
 let config
+let tracker
 
 // processes
 prompt.start()
+loadTracker()
 loadConfig()
 loadCommands()
 loadListeners()
@@ -31,13 +33,32 @@ function loadConfig() {
         prompt.get(["token"]).then(newTokenConfig => {
             config = newTokenConfig
             config.prefix = "_"
-            client.config = config
+            client.adminID = ""
             fs.writeFile("config.json", JSON.stringify(config, null, 4), function(err) {
                 if (err) throw err
+                client.config = config
                 console.log("saved config to `config.json`")
+                console.log("admin only commands will not work until an admin id is provided")
                 client.login(config.token)
                 console.log("api login successful!")
             })
+        })
+    }
+}
+
+// loads keyword tracker file or creates one if it does not already exist
+function loadTracker() {
+    if (fs.existsSync("tracker.json")) {
+        tracker = JSON.parse(fs.readFileSync("tracker.json"))
+        client.tracker = tracker
+    } else {
+        tracker = {}
+        tracker.date = null
+        tracker.count = 0
+        tracker.lastMessage = null
+        fs.writeFile("tracker.json", JSON.stringify(tracker, null, 4), function(err) {
+            if (err) throw err
+            client.tracker = tracker
         })
     }
 }
@@ -61,9 +82,9 @@ function loadListeners() {
     for (const file of eventFiles) {
         const event = require(`./events/${file}`)
         if (event.once) {
-            client.once(event.name, (...args) => event.execute(...args, client))
+            client.once(event.listener, (...args) => event.execute(...args, client))
         } else {
-            client.on(event.name, (...args) => event.execute(...args, client))
+            client.on(event.listener, (...args) => event.execute(...args, client))
         }
     }
 }
