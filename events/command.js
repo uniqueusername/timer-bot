@@ -12,7 +12,7 @@ module.exports = {
         if (!command) return
 
         // execute command with context
-        if (command.adminOnly && message.author.id == client.config.adminID) {
+        if (command.adminOnly && client.config.adminIDs.includes(message.author.id)) {
             try {
                 command.execute(message, args)
             } catch (err) {
