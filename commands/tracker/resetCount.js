@@ -1,6 +1,7 @@
 module.exports = {
     name: "resetCount",
     aliases: ["reset"],
+    adminOnly: true,
     description: "reset keyword counter",
     execute(message, args) {
         const fs = require("fs")
