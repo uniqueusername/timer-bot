@@ -34,6 +34,7 @@ function loadConfig() {
             config = newTokenConfig
             config.prefix = "_"
             client.adminID = ""
+            client.adminEmoji = "🕙"
             fs.writeFile("config.json", JSON.stringify(config, null, 4), function(err) {
                 if (err) throw err
                 client.config = config
