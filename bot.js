@@ -33,8 +33,9 @@ function loadConfig() {
         prompt.get(["token"]).then(newTokenConfig => {
             config = newTokenConfig
             config.prefix = "_"
-            client.adminID = ""
-            client.adminEmoji = "🕙"
+            config.adminIDs = []
+            config.adminEmoji = "🕙"
+            config.keywords = []
             fs.writeFile("config.json", JSON.stringify(config, null, 4), function(err) {
                 if (err) throw err
                 client.config = config
