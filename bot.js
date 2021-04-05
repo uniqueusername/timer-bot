@@ -35,6 +35,8 @@ function loadConfig() {
             config.prefix = "_"
             config.adminIDs = []
             config.adminEmoji = "🕙"
+            config.communityEmoji = "🕖"
+            config.reactThreshold = 4
             config.keywords = []
             fs.writeFile("config.json", JSON.stringify(config, null, 4), function(err) {
                 if (err) throw err
@@ -58,6 +60,7 @@ function loadTracker() {
         tracker.date = null
         tracker.count = 0
         tracker.lastMessage = null
+        tracker.messages = []
         fs.writeFile("tracker.json", JSON.stringify(tracker, null, 4), function(err) {
             if (err) throw err
             client.tracker = tracker
