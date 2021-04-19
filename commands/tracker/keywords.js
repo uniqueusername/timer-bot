@@ -2,6 +2,7 @@ module.exports = {
     name: "keywords",
     description: "lists the current keywords",
     aliases: ["kw"],
+    adminOnly: true,
     execute(message, args) {
         let keywordString = ""
         for (keyword of message.client.config.keywords) {
